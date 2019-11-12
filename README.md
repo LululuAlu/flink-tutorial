@@ -15,11 +15,10 @@
     1. 四种时间（接收时间，处理时间，事件时间）
     2. 迟到或数据乱序情况下怎么处理：水印是什么？如何解决问题。
 
-5. 数据类型和序列化[_](https://ci.apache.org/projects/flink/flink-docs-release-1.9/dev/types_serialization.html)
+5. 数据类型和序列化[DataType](https://ci.apache.org/projects/flink/flink-docs-release-1.9/dev/types_serialization.html)
 
 6. operate 算子
-    1. 基本stream算子：map，flatmap... 
-https://ci.apache.org/projects/flink/flink-docs-release-1.9/dev/stream/operators/
+    1. 基本stream算子：map，flatmap... [operate](https://ci.apache.org/projects/flink/flink-docs-release-1.9/dev/stream/operators/)
     2. window 
     3. join
     4. processFunction
@@ -31,13 +30,13 @@ https://ci.apache.org/projects/flink/flink-docs-release-1.9/dev/stream/operators
     3. ElasticSearch
 
 
-##成长篇
+## 成长篇
 8. side output
     1. split stream
 
 9. table API&SQL API
 
-##未完待续，持续更新
+## 未完待续，持续更新
 
 # FLINK BATH
 
