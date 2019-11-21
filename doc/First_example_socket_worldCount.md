@@ -161,7 +161,7 @@ maven添加打包插件
 ![A883A6DD-9C39-4e38-BF66-3078A844C17A](http://lgwen.cn/upload/2019/11/A883A6DD-9C39-4e38-BF66-3078A844C17A-ed8aa51d4df04a1999468d797185e9fe.png)
 
 
-**本教程的所有示例代码都已上传至Github仓库[flink-toturial](https://github.com/LululuAlu/flink-extend)**
+**本教程的所有示例代码都已上传至Github仓库[flink-toturial](https://github.com/LululuAlu/flink-tutorial)**
 
 ### 关注我的公众号
 了解我的最新动向  
