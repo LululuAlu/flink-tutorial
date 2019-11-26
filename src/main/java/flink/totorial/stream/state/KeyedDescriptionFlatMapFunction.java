@@ -1,4 +1,4 @@
-package flink.totorial.state;
+package flink.totorial.stream.state;
 
 import org.apache.flink.api.common.functions.RichFlatMapFunction;
 import org.apache.flink.api.common.state.StateTtlConfig;

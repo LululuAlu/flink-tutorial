@@ -1,4 +1,4 @@
-package flink.totorial.state;
+package flink.totorial.stream.state;
 
 import org.apache.flink.streaming.api.checkpoint.ListCheckpointed;
 import org.apache.flink.streaming.api.functions.source.RichParallelSourceFunction;

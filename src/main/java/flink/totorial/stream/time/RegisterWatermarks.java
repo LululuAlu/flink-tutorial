@@ -1,4 +1,4 @@
-package flink.totorial.time;
+package flink.totorial.stream.time;
 
 import flink.totorial.FileUtil;
 import org.apache.flink.streaming.api.TimeCharacteristic;
