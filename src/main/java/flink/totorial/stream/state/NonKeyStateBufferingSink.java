@@ -60,7 +60,7 @@ public class NonKeyStateBufferingSink  implements
                 new ListStateDescriptor<>(
                         "buffered-elements",
                         TypeInformation.of(new TypeHint<Tuple2<String, Integer>>() {}));
-
+        //PartitionableListState
         checkpointedState = context.getOperatorStateStore().getListState(descriptor);
 
         if (context.isRestored()) {

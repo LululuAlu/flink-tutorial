@@ -13,6 +13,7 @@ import javax.annotation.Nullable;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.sql.Timestamp;
 import java.util.Random;
 
@@ -31,7 +32,7 @@ public class RegisterWatermarks {
             @Override
             public void run(SourceContext<String> ctx) throws Exception {
                 InputStream inputStream = FileUtil.class.getClassLoader().getResourceAsStream("files/event.csv");
-                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "utf8"));
+                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
                 String line;
                 while ((line = reader.readLine()) != null) {
                     Thread.sleep(100);
@@ -45,9 +46,9 @@ public class RegisterWatermarks {
 
             }
         }).map(x -> {
-            String str[] = x.split(",");
+            String[] str = x.split(",");
             MyEvent event = new MyEvent();
-            event.count = Integer.valueOf(str[0]);
+            event.count = Integer.parseInt(str[0]);
             event.group = str[1];
             event.severity = str[2];
             event.eventTime = new Timestamp(System.currentTimeMillis() - new Random().nextInt(5000));
@@ -55,9 +56,9 @@ public class RegisterWatermarks {
         }).assignTimestampsAndWatermarks(new MyTimestampsAndWatermarks());
 
         withTimestampsAndWatermarks
-                .keyBy( (event) -> event.getGroup() )
+                .keyBy(MyEvent::getGroup)
                 .timeWindow(Time.seconds(10))
-                .reduce( (a, b) -> a.add(b) )
+                .reduce(MyEvent::add)
                 .print();
 
         env.execute();

@@ -4,7 +4,6 @@ import org.apache.flink.api.common.functions.RichMapFunction;
 import org.apache.flink.configuration.Configuration;
 
 import java.text.SimpleDateFormat;
-import java.util.logging.SimpleFormatter;
 
 /**
  * 2019/11/26

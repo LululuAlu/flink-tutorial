@@ -1,5 +1,7 @@
 package flink.totorial;
 
+import cn.hutool.core.util.ArrayUtil;
+
 import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
@@ -64,5 +66,6 @@ public class FileUtil {
             bf.append(line);
         }
         return bf.toString();
+
     }
 }
