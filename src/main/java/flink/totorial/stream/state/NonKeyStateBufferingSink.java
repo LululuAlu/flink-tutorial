@@ -46,6 +46,8 @@ public class NonKeyStateBufferingSink  implements
         }
     }
 
+
+
     @Override
     public void snapshotState(FunctionSnapshotContext context) throws Exception {
         checkpointedState.clear();

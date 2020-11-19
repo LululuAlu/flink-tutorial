@@ -1,9 +1,7 @@
 package flink.totorial.stream.state;
 
 import org.apache.flink.api.common.functions.RichFlatMapFunction;
-import org.apache.flink.api.common.state.StateTtlConfig;
-import org.apache.flink.api.common.state.ValueState;
-import org.apache.flink.api.common.state.ValueStateDescriptor;
+import org.apache.flink.api.common.state.*;
 import org.apache.flink.api.common.time.Time;
 import org.apache.flink.api.common.typeinfo.TypeHint;
 import org.apache.flink.api.common.typeinfo.TypeInformation;
@@ -19,6 +17,8 @@ import org.apache.flink.util.Collector;
 public class KeyedDescriptionFlatMapFunction extends RichFlatMapFunction<Tuple2<Long, Long>, Tuple2<Long, Long>> {
 
     private transient ValueState<Tuple2<Long, Long>> sum;
+
+    private transient ListState<Tuple2<String, Integer>> checkpointedState;
 
     @Override
     public void flatMap(Tuple2<Long, Long> value, Collector<Tuple2<Long, Long>> out) throws Exception {
@@ -55,5 +55,9 @@ public class KeyedDescriptionFlatMapFunction extends RichFlatMapFunction<Tuple2<
         // 设置TTL
         descriptor.enableTimeToLive(ttlConfig);
         sum = getRuntimeContext().getState(descriptor);
+
+        ListStateDescriptor<Tuple2<String, Integer>> listStateDescriptor = new ListStateDescriptor<Tuple2<String, Integer>>("list",
+                TypeInformation.of(new TypeHint<Tuple2<String, Integer>>() {}));
+        checkpointedState = getRuntimeContext().getListState(listStateDescriptor);
     }
 }
